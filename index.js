@@ -21,6 +21,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const searchInput = document.getElementById("searchInput");
   const searchButton = document.getElementById("searchButton");
 
+  const searchRepoInput = document.getElementById("searchRepoInput");
+  const searchRepoButton = document.getElementById("searchRepoButton");
+
   let currentPage = 1; // Initial page
   const perPage = 10; // Fixed per_page value
 
@@ -66,6 +69,29 @@ document.addEventListener("DOMContentLoaded", () => {
       handleSearch();
     }
   });
+
+  const handleRepoSearch = () => {
+    const repoSearchTerm = searchRepoInput.value.trim();
+
+    if (repoSearchTerm !== "") {
+      // Perform actions for the repository search term
+      currentPage = 1; // Reset current page when performing a new search
+
+      // Fetch repositories for the searched term
+      fetchRepositoriesSearch(repoSearchTerm);
+    }
+  };
+
+  // Add event listener for repository search button
+  searchRepoButton.addEventListener("click", handleRepoSearch);
+
+  // Optionally, you can also handle search on pressing Enter in the input field
+  searchRepoInput.addEventListener("keypress", (event) => {
+    if (event.key === "Enter") {
+      handleRepoSearch();
+    }
+  });
+
   const fetchUserData = async () => {
     showLoader(); // Show loader before fetching data
 
@@ -92,6 +118,49 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
+  const fetchRepositoriesSearch = async (repoSearchTerm) => {
+    showLoader(); // Show loader before fetching data
+    const apiUrl = `https://api.github.com/users/${username}/repos`;
+    const headers = accessToken
+      ? { Authorization: `Bearer ${accessToken}` }
+      : {};
+
+    try {
+      let allRepositories = [];
+      let page = 1;
+      let fetchMore = true;
+
+      while (fetchMore) {
+        const response = await fetch(
+          `${apiUrl}?page=${page}&per_page=${perPage}`,
+          { headers }
+        );
+
+        if (!response.ok) {
+          throw new Error(`Error: ${response.status} - ${response.statusText}`);
+        }
+
+        const repositories = await response.json();
+        if (repositories.length > 0) {
+          allRepositories = [...allRepositories, ...repositories];
+          page++;
+        } else {
+          fetchMore = false;
+        }
+      }
+      const filteredRepositories = allRepositories.filter((item) =>
+        item.name.toLowerCase().includes(repoSearchTerm.toLowerCase())
+      );
+
+      displayRepositories(filteredRepositories);
+      displayPagination(allRepositories.length); // Update pagination with the total number of repositories
+    } catch (error) {
+      console.error(error);
+    } finally {
+      hideLoader(); // Hide loader regardless of success or failure
+      showMainContent();
+    }
+  };
   const fetchRepositories = async () => {
     showLoader(); // Show loader before fetching data
 

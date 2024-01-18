@@ -53,6 +53,38 @@ body {
 #searchButton:hover {
   background-color: #2078b0;
 }
+.reposearchContainer{
+  margin: 20px 0;
+  text-align: center;
+}
+
+/* Search input styles */
+#searchRepoInput {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 5px;
+  width: 400px;
+  box-sizing: border-box;
+}
+
+/* Search button styles */
+#searchRepoButton {
+  padding: 10px 15px;
+  font-size: 16px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover effect for the search button */
+#searchRepoButton:hover {
+  background-color: #2078b0;
+}
 
 .profile {
   width: 100%;
@@ -145,6 +177,7 @@ body {
   display: flex;
   gap: 10px;
   margin-top: 30px;
+  flex-wrap: wrap;
 }
 
 /* Style each language item */
@@ -240,5 +273,36 @@ body {
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@media only screen and (max-width: 390px) {
+  .repo-container {
+    width: 300px;
+  }
+
+  .profileImg img{
+    width: 100px;
+    height: 100px;
+  }
+
+  .profile{
+    width: 350px;
+  }
+
+  .profileDetail{
+    padding-left: 10px;
+  }
+
+  #searchInput{
+    width: 200px;
+  }
+
+  #searchRepoInput{
+    width: 150px;
+  }
+
+  .repo-languages{
+    margin-top: 5px;
   }
 }
