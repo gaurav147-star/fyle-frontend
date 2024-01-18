@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <title>Fyle Assignment</title>
+    <script
+      src="https://kit.fontawesome.com/059dce6948.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div id="loader" class="loader"></div>
+
+    <div class="main">
+      <!-- Inside your existing HTML code, add the following section for search input and submit button -->
+      <div class="searchContainer">
+        <input type="text" id="searchInput" placeholder="Search GitHub user" />
+        <button id="searchButton">Search</button>
+      </div>
+
+      <div class="profile">
+        <div class="profileInfo">
+          <div class="profileImg" id="profileImg"></div>
+          <div class="profileDetail">
+            <span class="userName" id="userName"></span>
+
+            <span class="userBio" id="userBio"></span>
+            <div>
+              <i class="fa-solid fa-location-dot"></i>
+              <span class="userLocation" id="userLocation"></span>
+            </div>
+            <span class="userLink" id="userLink"></span>
+          </div>
+        </div>
+        <div class="userGithub">
+          <i class="fa-solid fa-link"></i>
+          <a id="userGithubLink" target="_blank" class="userGithubLink"> </a>
+        </div>
+      </div>
+      <div id="repositoriesContainer" class="reposmain"></div>
+      <div class="pagemaintab">
+        <div class="paginationMain">
+          <i
+            id="prevNavigateButton"
+            class="paginationArrow fa-solid fa-angles-left"
+          ></i>
+          <div id="paginationContainer" class="pagination"></div>
+          <i
+            id="nextNavigateButton"
+            class="paginationArrow fa-solid fa-angles-right"
+          ></i>
+        </div>
+        <div class="pagebuttonmain">
+          <button id="prevButton" class="pagebutton">
+            <span><i class="fa-solid fa-arrow-left"></i></span>Older
+          </button>
+          <button id="nextButton" class="pagebutton">
+            Newer <span><i class="fa-solid fa-arrow-right"></i></span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <!-- <script src="index.js"></script> -->
+    <script src="main.js"></script>
+  </body>
+</html>
