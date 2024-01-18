@@ -1,3 +1,4 @@
+import GITHUB_API_KEY from "./apikey";
 document.addEventListener("DOMContentLoaded", () => {
   const repositoriesContainer = document.getElementById(
     "repositoriesContainer"
@@ -25,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Function to fetch repositories
   let username = "gaurav147-star";
-  const accessToken = "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"; // Replace with your actual GitHub access token
+  const accessToken = GITHUB_API_KEY;
 
   const loader = document.getElementById("loader");
 
