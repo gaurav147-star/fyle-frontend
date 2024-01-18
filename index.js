@@ -1,4 +1,4 @@
-import GITHUB_API_KEY from "./apikey";
+import GITHUB_API_KEY from "./apikey.js";
 document.addEventListener("DOMContentLoaded", () => {
   const repositoriesContainer = document.getElementById(
     "repositoriesContainer"
@@ -27,6 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Function to fetch repositories
   let username = "gaurav147-star";
   const accessToken = GITHUB_API_KEY;
+  console.log(accessToken);
 
   const loader = document.getElementById("loader");
 
