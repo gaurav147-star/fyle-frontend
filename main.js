@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Function to fetch repositories
   let username = "gaurav147-star";
-  const accessToken = "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"; // Replace with your actual GitHub access token
+  const accessToken = "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"; // Replace with your actual GitHub access token
 
   const loader = document.getElementById("loader");
 
